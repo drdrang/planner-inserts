@@ -12,7 +12,7 @@ A set of PostScript and PDF files for Cornell-like notepaper. Three types:
     
 3. Junior-sized paper (5.5 × 8.5) with top binding margins.
 
-  <img src="http://www.leancrew.com/all-this/images/notes-topbinding.png" />
+    <img src="http://www.leancrew.com/all-this/images/notes-topbinding.png" />
 
 All are intended to be printed on letter-sized paper. The junior-sizes pages are printed two-up.
 
