@@ -16,13 +16,15 @@ A set of PostScript and PDF files for Cornell-like notepaper. Three types:
 
 All are intended to be printed on letter-sized paper. The junior-sizes pages are printed two-up.
 
-The PostScript files are the master files; the PDFs are derived from them via the `ps2pdf` utility that ships with [Ghostscript][1]. The multipage PDFs (which end with "-rv") are constructed from the single-page PDFs through a shell script called `pdfcat`:
+The PostScript files are the master files; the PDFs are derived from them. 
+
+The Makefile puts everything together. Running `make` creates all the PDF files; running `make clean` deletes all the PDF files. The single page PDFs are generated via the `ps2pdf` utility that ships with [Ghostscript][1]. The multipage PDFs (which end with "-rv") are constructed from the single-page PDFs through a shell script called `pdfcat`:
 
     #!/bin/bash
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=- $*
 
-This uses Ghostscript to concatenate the PDF files listed on the command line and send them to stdout.
+This uses Ghostscript to concatenate the PDF files listed on the command line and send them to stdout. You'll need to have both `pdfcat` and `ps2pdf` in your $PATH in order to run the Makefile.
 
-The Makefile puts everything together. Running `make` creates all the PDF files; running `make clean` deletes all the PDF files.
+
 
 [1]: http://pages.cs.wisc.edu/~ghost/
