@@ -1,5 +1,5 @@
 %!PS-Adobe-3.0
-%%Title: Cornellish Notes Recto - Letter
+%%Title: Cornellish Notes Verso - Letter
 %%Author: Dr. Drang (drdrang at gmail)
 %%EndComments
 %%BeginSetup
@@ -38,7 +38,7 @@
   .5 setlinewidth
   0 setgray
   newpath
-    llx lly moveto
+    llx gwidth add lly moveto
     cwidth 0 rlineto
     0 clength rlineto
     cwidth neg 0 rlineto
@@ -51,17 +51,17 @@
   [1 1] 0 setdash
   lly gspace lly glength add {
     newpath
-      llx cwidth add exch moveto
+      llx exch moveto
       gwidth 0 rlineto
     stroke
   } for
   [] 0 setdash
 
   % draw grid verticals
-  0.25 setlinewidth
+  0.125 setlinewidth
   0 setgray
   [1 6.5] 4 setdash
-  llx cwidth add gspace llx cwidth add gwidth add {
+  llx gspace llx gwidth add {
     newpath
       lly moveto
       0 glength rlineto
@@ -73,7 +73,7 @@
   .5 setlinewidth
   0 setgray
   newpath
-    llx cwidth add lly moveto
+    llx lly moveto
     gwidth 0 rlineto
     0 glength rlineto
     gwidth neg 0 rlineto
@@ -107,7 +107,7 @@
 % draw the notes section
 gsave
 0 0 moveto
-.75 inch .5 inch notes
+.5 inch .5 inch notes
 grestore
 
 showpage
