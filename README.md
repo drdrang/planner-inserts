@@ -23,7 +23,7 @@ The Makefile puts everything together. Running `make` creates all the PDF files;
     #!/bin/bash
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=- $*
 
-This uses Ghostscript to concatenate the PDF files listed on the command line and send them to stdout. You'll need to have both `pdfcat` and `ps2pdf` in your $PATH in order to run the Makefile.
+This uses Ghostscript to concatenate the PDF files listed on the command line and send them to stdout. You'll need to have both `pdfcat` and `ps2pdf` in your `$PATH` in order to run the Makefile.
 
 
 
