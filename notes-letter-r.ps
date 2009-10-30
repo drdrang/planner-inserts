@@ -48,7 +48,7 @@
   % draw grid horizontals
   .25 setlinewidth
   0 setgray
-  [1 1] 0 setdash
+  [1 2] .5 setdash
   lly gspace lly glength add {
     newpath
       llx cwidth add exch moveto
@@ -60,7 +60,7 @@
   % draw grid verticals
   0.25 setlinewidth
   0 setgray
-  [1 6.5] 4 setdash
+  [.5 7] 4 setdash
   llx cwidth add gspace llx cwidth add gwidth add {
     newpath
       lly moveto
