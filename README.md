@@ -14,6 +14,10 @@ A set of PostScript and PDF files for Cornell-like notepaper. Three types:
 
     <img src="http://www.leancrew.com/all-this/images/notes-topbinding.png" />
 
+4. Slightly shorter junior-sized paper (5.5 × 8.25) with top binding margins.
+
+        <img src="http://www.leancrew.com/all-this/images2011/notes-topbinding-short.png" />
+
 All are intended to be printed on letter-sized paper. The junior-sizes pages are printed two-up.
 
 The PostScript files are the master files; the PDFs are derived from them. 

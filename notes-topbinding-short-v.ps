@@ -1,0 +1,117 @@
+%!PS-Adobe-3.0
+%%Title: Cornellish Notes Topbinding - Junior Short
+%%Author: Dr. Drang (drdrang at gmail)
+%%EndComments
+%%BeginSetup
+
+% basic dimensions
+/inch {72 mul} def            % conversion to points
+/swidth 8.5 inch def        % letter-sized sheet width
+/slength 11 inch def        % letter-sized sheet length
+
+% size of printed area
+/width 5.00 inch def
+/length 7.50 inch def
+
+% dimensions of gridded area
+/gwidth 3.75 inch def
+/glength 7.00 inch def
+/gspace .25 inch def
+
+% dimensions of cue area
+/cwidth width gwidth sub def
+/clength glength def
+
+% dimensions of title block
+/hwidth width def
+/hlength .375 inch def
+/hpage hwidth .5 inch sub def
+/hdate hpage 1 inch sub def
+
+% draw the notes
+% stack: llx lly
+/notes {
+  /lly exch def
+  /llx exch def
+
+  % draw cue area
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx lly moveto
+    cwidth 0 rlineto
+    0 clength rlineto
+    cwidth neg 0 rlineto
+  closepath
+  stroke
+
+  % draw grid horizontals
+  .25 setlinewidth
+  0 setgray
+  [1 2] .5 setdash
+  lly gspace lly glength add {
+    newpath
+      llx cwidth add exch moveto
+      gwidth 0 rlineto
+    stroke
+  } for
+  [] 0 setdash
+
+  % draw grid verticals
+  .25 setlinewidth
+  0 setgray
+  [.5 5.5] 3.25 setdash
+  llx cwidth add gspace llx cwidth add gwidth add {
+    newpath
+      lly moveto
+      0 glength rlineto
+    stroke
+  } for
+  [] 0 setdash
+
+  % draw grid box
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx cwidth add lly moveto
+    gwidth 0 rlineto
+    0 glength rlineto
+    gwidth neg 0 rlineto
+  closepath
+  stroke
+
+  % draw title block
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx lly length add moveto
+    hwidth 0 rlineto
+    0 hlength neg rlineto
+    hwidth neg 0 rlineto
+  closepath
+  stroke
+
+  % page and date separators
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx hpage add lly length add moveto
+    0 hlength neg rlineto
+  stroke
+  newpath
+    llx hdate add lly length add moveto
+    0 hlength neg rlineto
+  stroke
+} def
+
+% draw 2 notes sections on a rotated page
+gsave
+0 0 moveto
+-90 rotate
+-10.75 inch .50 inch notes
+-5.25 inch .50 inch notes
+grestore
+
+showpage
+
+
