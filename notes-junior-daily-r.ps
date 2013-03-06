@@ -1,0 +1,127 @@
+%!PS-Adobe-3.0
+%%Title: Cornellish Notes Recto - Junior
+%%Author: Dr. Drang (drdrang at gmail)
+%%DocumentFonts: Helvetica
+%%DocumentNeededFonts: Helvetica
+%%EndComments
+%%BeginSetup
+
+% basic dimensions
+/inch {72 mul} def            % conversion to points
+/swidth 8.5 inch def        % letter-sized sheet width
+/slength 11 inch def        % letter-sized sheet length
+
+% size of printed area
+/width 4.75 inch def
+/length 7.75 inch def
+
+% dimensions of gridded area
+/gwidth 3.5 inch def
+/glength 7.25 inch def
+/gspace .25 inch def
+
+% dimensions of cue area
+/cwidth width gwidth sub def
+/clength glength def
+
+% dimensions of title block
+/hwidth width def
+/hlength .375 inch def
+/hpage hwidth .5 inch sub def
+/hdate hpage 1 inch sub def
+
+% font for title block
+/tfont /Helvetica findfont 16 scalefont def
+
+% draw the notes
+% stack: llx lly
+/notes {
+  /lly exch def
+  /llx exch def
+
+  % draw cue area
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx lly moveto
+    cwidth 0 rlineto
+    0 clength rlineto
+    cwidth neg 0 rlineto
+  closepath
+  stroke
+
+  % draw grid horizontals
+  .25 setlinewidth
+  0 setgray
+  [1 2] .5 setdash
+  lly gspace lly glength add {
+    newpath
+      llx cwidth add exch moveto
+      gwidth 0 rlineto
+    stroke
+  } for
+
+  % draw grid verticals
+  0.25 setlinewidth
+  0 setgray
+  [.5 5.5] 3.25 setdash
+  llx cwidth add gspace llx cwidth add gwidth add {
+    newpath
+      lly moveto
+      0 glength rlineto
+    stroke
+  } for
+  [] 0 setdash
+
+  % draw grid box
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx cwidth add lly moveto
+    gwidth 0 rlineto
+    0 glength rlineto
+    gwidth neg 0 rlineto
+  closepath
+  stroke
+
+  % draw title block
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx lly length add moveto
+    hwidth 0 rlineto
+    0 hlength neg rlineto
+    hwidth neg 0 rlineto
+  closepath
+  stroke
+
+  % page and date separators
+  .5 setlinewidth
+  0 setgray
+  newpath
+    llx hpage add lly length add moveto
+    0 hlength neg rlineto
+  stroke
+  newpath
+    llx hdate add lly length add moveto
+    0 hlength neg rlineto
+  stroke
+
+  % title
+  0 setgray
+  tfont setfont
+  llx 50 add lly length add 20 sub moveto
+  (Daily notes) show
+} def
+
+% draw 2 notes sections on a rotated page
+gsave
+0 0 moveto
+90 rotate
+.5 inch -8 inch notes
+6 inch -8 inch notes
+grestore
+
+showpage
+
+
